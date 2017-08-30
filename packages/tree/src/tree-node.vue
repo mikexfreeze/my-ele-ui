@@ -1,7 +1,6 @@
 <template>
   <div class="el-tree-node"
     @click.stop="handleClick"
-    @contextmenu.stop="handleRightClick"
     v-show="node.visible"
 
     :class="{
@@ -14,8 +13,10 @@
       <span
         class="el-tree-node__expand-icon"
         @click.stop="handleExpandIconClick"
+        @contextmenu.stop="handleRightClick"
         :class="{ 'is-leaf': node.isLeaf, expanded: !node.isLeaf && expanded }">
       </span>
+        <span class="js-refresh" @click.stop="handleRightClick"></span>
       <el-checkbox
         v-if="showCheckbox"
         v-model="node.checked"
